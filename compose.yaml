@@ -15,9 +15,6 @@ services:
   immich:
     container_name: immich
     hostname: immich
-    # image: ghcr.io/immich-app/immich-server:v1.129.0
-    #image: ghcr.io/immich-app/immich-server:v1.130.3
-    #image: ghcr.io/immich-app/immich-server:v1.131.2
     #image: ghcr.io/immich-app/immich-server:v1.144.1
     image: ghcr.io/immich-app/immich-server:v2.3.1
     restart: unless-stopped
@@ -54,11 +51,9 @@ services:
     healthcheck:
       disable: false
 
-
   immich-machine-learning:
     container_name: immich-machine-learning
     hostname: immich-machine-learning
-    # image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
     #image: ghcr.io/immich-app/immich-machine-learning:v1.130.3
     image: ghcr.io/immich-app/immich-machine-learning:v2.3.1
     restart: unless-stopped
@@ -79,9 +74,8 @@ services:
       TZ: Europe/Berlin
     healthcheck:
       disable: false
-    
 
-      
+
   redis:
     container_name: redis
     hostname: redis
@@ -146,64 +140,3 @@ services:
 
 
 
-
-#services:
-#  xxxxx:
-#    env_file:
-#      - .env
-#    container_name: 
-#    hostname: 
-#    restart: unless-stopped
-#    # privileged: true
-#    command: "--user 1000:1000  --remove-orphans"
-#
-#    container_name: 
-#    hostname: 
-#    tty: true
-#    stdin_open: true
-#    
-#    volumes:
-#      - /home/docker/volumes/
-#
-#      - /opt/docker/volumes/
-#
-#      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
-## #####################################
-#    environment:
-#      PUID: 1000
-#      PGID: 1000
-#      UID: 1000
-#      GID: 1000
-#      TZ: 'Europe/Berlin'
-#
-#      - PUID=1000
-#      - PGID=1000
-#      - UID=1000
-#      - GID=1000
-#      - SETGID=1000
-#      - SETUID=1000
-#      - LANGUAGE='de_DE:de.UTF-8'
-#      - TZ='Europe/Berlin'
-## #####################################
-#    networks:
-#      internal:
-#      reverse-proxy:
-#      #macvlan-eth0:
-#        ipv4_address: 192.168.0.143
-#        #mac_address: 'e2:99:f2:1b:9c:ba'
-#      ipvlan-eth20:
-#        ipv4_address: 192.168.20.137
-#      reverse-proxy-eth20:
-#        ipv4_address: 192.168.20.138
-#        #mac_address: '46:05:f3:21:3c:72'
-## #####################################
-#networks:
-#  reverse-proxy:
-#  #macvlan-eth0:
-#    external: true
-#  internal:
-#    #driver: bridge#
-#  ipvlan-eth20:
-#    external: true
-#  reverse-proxy-eth20:
-#    external: true
