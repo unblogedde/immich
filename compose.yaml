@@ -19,7 +19,7 @@ services:
     #image: ghcr.io/immich-app/immich-server:v1.130.3
     #image: ghcr.io/immich-app/immich-server:v1.131.2
     #image: ghcr.io/immich-app/immich-server:v1.144.1
-    image: ghcr.io/immich-app/immich-server:v2.3.0 
+    image: ghcr.io/immich-app/immich-server:v2.3.1
     restart: unless-stopped
     depends_on:
       - db
@@ -60,7 +60,7 @@ services:
     hostname: immich-machine-learning
     # image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
     #image: ghcr.io/immich-app/immich-machine-learning:v1.130.3
-    image: ghcr.io/immich-app/immich-machine-learning:v2.3.0 
+    image: ghcr.io/immich-app/immich-machine-learning:v2.3.1
     restart: unless-stopped
     tty: true
     stdin_open: true
