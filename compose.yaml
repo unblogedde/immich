@@ -3,7 +3,10 @@ networks:
   internal:
     name: internal
     external: false
-    
+    driver: bridge
+  ipvlan-eth50:
+    external: true
+
 volumes:
   model-cache:
 
@@ -141,11 +144,8 @@ services:
         'wal_compression=on',
       ]
 
-networks:
-  ipvlan-eth50:
-    external: true
-  internal:
-    driver: bridge
+
+
 
 #services:
 #  xxxxx:
