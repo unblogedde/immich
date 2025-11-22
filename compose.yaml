@@ -137,6 +137,3 @@ services:
         '-c',
         'wal_compression=on',
       ]
-
-
-
