@@ -1,4 +1,144 @@
 
+networks:
+  internal:
+    name: internal
+    external: false
+    
+volumes:
+  model-cache:
+
+services:
+
+  immich:
+    container_name: immich
+    hostname: immich
+    # image: ghcr.io/immich-app/immich-server:v1.129.0
+    #image: ghcr.io/immich-app/immich-server:v1.130.3
+    #image: ghcr.io/immich-app/immich-server:v1.131.2
+    #image: ghcr.io/immich-app/immich-server:v1.131.3
+    image: ghcr.io/immich-app/immich-server:v1.132.1
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    networks:
+      - internal
+    tty: true
+    stdin_open: true
+      
+    ports:
+      - 2283:2283
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/docker/volumes/immich/data:/usr/src/app/upload
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:rw
+      - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:rw
+      # - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/upload:/usr/src/app/upload:rw
+    environment:
+      DB_HOSTNAME: db
+      DB_USERNAME: immich
+      DB_DATABASE_NAME: immich
+      DB_PASSWORD: HansiK!
+      TZ: Europe/Berlin
+    healthcheck:
+      disable: false
+
+
+  immich-machine-learning:
+    container_name: immich-machine-learning
+    hostname: immich-machine-learning
+    # image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
+    #image: ghcr.io/immich-app/immich-machine-learning:v1.130.3
+    image: ghcr.io/immich-app/immich-machine-learning:v1.131.3
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+      - redis
+    networks:
+      - internal
+    volumes:
+      - model-cache:/cache
+    environment:
+      DB_HOSTNAME: db
+      DB_USERNAME: immich
+      DB_DATABASE_NAME: immich
+      DB_PASSWORD: HansiK!
+      TZ: Europe/Berlin
+    healthcheck:
+      disable: false
+    
+
+      
+  redis:
+    container_name: redis
+    hostname: redis
+    #image: redis:7-alpine
+    # image: redis:7.4
+    image: docker.io/library/redis:7
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    networks:
+      - internal
+    healthcheck:
+      test: redis-cli ping || exit 1
+    environment:
+      TZ: Europe/Berlin
+      #VM.OVERCOMMIT_MEMORY: 1
+    # command: --sysctl vm.overcommit_memory=1
+    #command:
+    #  [
+    #    'sysctl',
+    #    'vm.overcommit_memory=1',
+    #  ]
+
+  db:
+    container_name: postgresql
+    hostname: postgresql
+    image: tensorchord/pgvecto-rs:pg16-v0.3.0
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    networks:
+      - internal
+    volumes:
+      - /home/docker/volumes/immich/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: immich
+      POSTGRES_USER: immich
+      POSTGRES_PASSWORD: HansiK!
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+      TZ: Europe/Berlin
+    healthcheck:
+      test: pg_isready --dbname='immich' --username='immich' || exit 1; Chksum="$$(psql --dbname='immich' --username='immich' --tuples-only --no-align --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')"; echo "checksum failure count is $$Chksum"; [ "$$Chksum" = '0' ] || exit 1
+      interval: 5m
+      start_interval: 30s
+      start_period: 5m
+    command:
+      [
+        'postgres',
+        '-c',
+        'shared_preload_libraries=vectors.so',
+        '-c',
+        'search_path="$$user", public, vectors',
+        '-c',
+        'logging_collector=on',
+        '-c',
+        'max_wal_size=2GB',
+        '-c',
+        'shared_buffers=512MB',
+        '-c',
+        'wal_compression=on',
+      ]
+
 
 #services:
 #  xxxxx:
