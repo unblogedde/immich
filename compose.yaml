@@ -33,14 +33,15 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/docker/volumes/immich/data:/usr/src/app/upload
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:/mnt/DS220-myWorkspace/Fotos/HEIC:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:/mnt/DS220-myWorkspace/Fotos/RAW:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:/mnt/DS220-myWorkspace/Fotos/JPEG:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:/mnt/DS220-myWorkspace/Fotos/Screenshots:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:/mnt/DS220-myWorkspace/Fotos/PNG:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:/mnt/DS220-myWorkspace/Fotos/iPhone:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:/mnt/DS220-myWorkspace/Fotos/iPhoto:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:/mnt/DS220-myWorkspace/Fotos/_SORTIEREN:rw
+      # - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:/mnt/DS220-myWorkspace/Fotos/HEIC:rw
+      - /mnt/DS220-myWorkspace/Fotos/HEIC:/mnt/DS220-myWorkspace/Fotos/HEIC:rw
+      - /mnt/DS220-myWorkspace/Fotos/RAW:/mnt/DS220-myWorkspace/Fotos/RAW:rw
+      - /mnt/DS220-myWorkspace/Fotos/JPEG:/mnt/DS220-myWorkspace/Fotos/JPEG:rw
+      - /mnt/DS220-myWorkspace/Fotos/Screenshots:/mnt/DS220-myWorkspace/Fotos/Screenshots:rw
+      - /mnt/DS220-myWorkspace/Fotos/PNG:/mnt/DS220-myWorkspace/Fotos/PNG:rw
+      - /mnt/DS220-myWorkspace/Fotos/iPhone:/mnt/DS220-myWorkspace/Fotos/iPhone:rw
+      - /mnt/DS220-myWorkspace/Fotos/iPhoto:/mnt/DS220-myWorkspace/Fotos/iPhoto:rw
+      - /mnt/DS220-myWorkspace/Fotos/_SORTIEREN:/mnt/DS220-myWorkspace/Fotos/_SORTIEREN:rw
       # - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/upload:/usr/src/app/upload:rw
     environment:
       DB_HOSTNAME: db
