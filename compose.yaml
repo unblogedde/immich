@@ -33,14 +33,14 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/docker/volumes/immich/data:/usr/src/app/upload
-      - /mnt/DS220-myWorkspace/Fotos/HEIC:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:rw
-      - /mnt/DS220-myWorkspace/Fotos/RAW:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:rw
+      - /mnt/DS220-myWorkspace/Fotos/HEIC:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:rw
+      - /mnt/DS220-myWorkspace/Fotos/RAW:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:rw
+      - /mnt/DS220-myWorkspace/Fotos/JPEG:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:rw
+      - /mnt/DS220-myWorkspace/Fotos/Screenshots:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:rw
+      - /mnt/DS220-myWorkspace/Fotos/PNG:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:rw
+      - /mnt/DS220-myWorkspace/Fotos/iPhone:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhone:rw
+      - /mnt/DS220-myWorkspace/Fotos/iPhoto:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/iPhoto:rw
+      - /mnt/DS220-myWorkspace/Fotos/_SORTIEREN:/opt/docker/volumes/immich/DS220-myWorkspace/Fotos/_SORTIEREN:rw
       # - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/upload:/usr/src/app/upload:rw
     environment:
       DB_HOSTNAME: db
