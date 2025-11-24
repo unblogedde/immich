@@ -37,7 +37,7 @@ services:
       - /opt/docker/volumes/immich/DS220-myWorkspace/HEIC:/opt/docker/volumes/immich/DS220-myWorkspace/HEIC:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/RAW:/opt/docker/volumes/immich/DS220-myWorkspace/RAW:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/JPEG:/opt/docker/volumes/immich/DS220-myWorkspace/JPEG:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Screenshots:/opt/docker/volumes/immich/DS220-myWorkspace/creenshots:rw
+      - /opt/docker/volumes/immich/DS220-myWorkspace/Screenshots:/opt/docker/volumes/immich/DS220-myWorkspace/Screenshots:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/PNG:/opt/docker/volumes/immich/DS220-myWorkspace/PNG:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/iPhone:/opt/docker/volumes/immich/DS220-myWorkspace/iPhone:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/iPhoto:/opt/docker/volumes/immich/DS220-myWorkspace/iPhoto:rw
