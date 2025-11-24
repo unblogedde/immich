@@ -33,8 +33,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/docker/volumes/immich/data:/usr/src/app/upload
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:rw
-      - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:rw
+      - /mnt/DS220-myWorkspace/Fotos/HEIC:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/HEIC:rw
+      - /mnt/DS220-myWorkspace/Fotos/RAW:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/RAW:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/JPEG:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/Screenshots:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:/home/docker/volumes/immich/DS220-myWorkspace/Fotos/PNG:rw
