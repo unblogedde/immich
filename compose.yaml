@@ -42,7 +42,7 @@ services:
       - /opt/docker/volumes/immich/DS220-myWorkspace/iPhone:/opt/docker/volumes/immich/DS220-myWorkspace/iPhone:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/iPhoto:/opt/docker/volumes/immich/DS220-myWorkspace/iPhoto:rw
       - /opt/docker/volumes/immich/DS220-myWorkspace/_SORTIEREN://opt/docker/volumes/immich/DS220-myWorkspace/_SORTIEREN:rw
-      # - /home/docker/volumes/immich/DS220-myWorkspace/Fotos/upload:/usr/src/app/upload:rw
+      # /opt/docker/volumes/immich/DS220-myWorkspace/upload:/usr/src/app/upload:rw
     environment:
       DB_HOSTNAME: db
       DB_USERNAME: immich
